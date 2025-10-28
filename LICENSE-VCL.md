@@ -17,7 +17,7 @@ The Vibe-Coder License (VCL-0.1-Experimental)
 This license was vibe-coded. Future revisions must also be vibe-coded,  
 only if it serves the vibe.
 
-https://github.com/tyraziel/vibe-coder-license/
+[https://github.com/tyraziel/vibe-coder-license/](https://github.com/tyraziel/vibe-coder-license/)
 
 Permission is granted to use, copy, modify, and distribute this software 
 for any purpose, commercial or otherwise, ONLY IF IT SERVES THE VIBE, 
