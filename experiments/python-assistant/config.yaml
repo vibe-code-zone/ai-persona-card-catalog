@@ -1,0 +1,24 @@
+name: "Python Development Assistant"
+version: "2.0"
+
+# Core settings
+settings:
+  python_version: "3.11+"
+  style_guide: "./style_guide.md"
+  testing_framework: "pytest"
+  
+# Code style preferences
+style:
+  line_length: 88
+  formatter: "black"
+  linter: "ruff"
+  type_checker: "mypy"
+
+# Templates and examples
+templates:
+  testing: "./templates/testing_template.md"
+  
+# Documentation references  
+documentation:
+  usage_examples: "./usage_examples.md"
+  best_practices: "./style_guide.md"

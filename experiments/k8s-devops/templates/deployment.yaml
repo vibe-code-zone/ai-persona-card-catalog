@@ -1,0 +1,117 @@
+# Kubernetes Deployment Template
+
+## Reference Documentation
+- **Source:** https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+- **API Reference:** https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#deployment-v1-apps
+
+## Standard Deployment Configuration
+
+```yaml
+# Reference: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: [APP_NAME_HERE]
+  namespace: [NAMESPACE_HERE]
+  labels:
+    app: [APP_NAME_HERE]
+    version: "[APP_VERSION_HERE]"
+    environment: "[ENVIRONMENT_HERE]"
+spec:
+  replicas: [REPLICA_COUNT_HERE]
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: [APP_NAME_HERE]
+  template:
+    metadata:
+      labels:
+        app: [APP_NAME_HERE]
+        version: "[APP_VERSION_HERE]"
+    spec:
+      # Security Context - Reference: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 2000
+      
+      containers:
+      - name: [APP_NAME_HERE]
+        image: [IMAGE_REPOSITORY_HERE]:[IMAGE_TAG_HERE]
+        imagePullPolicy: IfNotPresent
+        
+        # Resource Management - Reference: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        resources:
+          requests:
+            memory: "[MEMORY_REQUEST_HERE]"
+            cpu: "[CPU_REQUEST_HERE]"
+          limits:
+            memory: "[MEMORY_LIMIT_HERE]"
+            cpu: "[CPU_LIMIT_HERE]"
+        
+        # Health Checks - Reference: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+        livenessProbe:
+          httpGet:
+            path: [HEALTH_CHECK_PATH_HERE]
+            port: [SERVICE_PORT_HERE]
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        
+        readinessProbe:
+          httpGet:
+            path: [READINESS_CHECK_PATH_HERE]
+            port: [SERVICE_PORT_HERE]
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        
+        ports:
+        - containerPort: [SERVICE_PORT_HERE]
+          name: http
+          protocol: TCP
+        
+        # Environment Configuration - Reference: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+        env:
+        - name: ENVIRONMENT
+          value: "[ENVIRONMENT_HERE]"
+        
+        # ConfigMap/Secret References - Reference: https://kubernetes.io/docs/concepts/configuration/configmap/
+        envFrom:
+        - configMapRef:
+            name: [APP_NAME_HERE]-config
+        - secretRef:
+            name: [APP_NAME_HERE]-secrets
+```
+
+## Template Variables
+
+- `[APP_NAME_HERE]` - Application name (lowercase, hyphenated)
+- `[NAMESPACE_HERE]` - Kubernetes namespace
+- `[APP_VERSION_HERE]` - Application version/tag
+- `[ENVIRONMENT_HERE]` - Environment (dev, staging, prod)
+- `[REPLICA_COUNT_HERE]` - Number of pod replicas
+- `[IMAGE_REPOSITORY_HERE]` - Container image repository
+- `[IMAGE_TAG_HERE]` - Container image tag
+- `[MEMORY_REQUEST_HERE]` - Memory request (e.g., "128Mi")
+- `[MEMORY_LIMIT_HERE]` - Memory limit (e.g., "256Mi")
+- `[CPU_REQUEST_HERE]` - CPU request (e.g., "100m")
+- `[CPU_LIMIT_HERE]` - CPU limit (e.g., "200m")
+- `[SERVICE_PORT_HERE]` - Application port number
+- `[HEALTH_CHECK_PATH_HERE]` - Health check endpoint (e.g., "/health")
+- `[READINESS_CHECK_PATH_HERE]` - Readiness check endpoint (e.g., "/ready")
+
+## Best Practices Implemented
+
+1. **Security**: Non-root user, security context
+2. **Resource Management**: Requests and limits defined
+3. **Health Monitoring**: Liveness and readiness probes
+4. **Rolling Updates**: Zero-downtime deployment strategy
+5. **Configuration**: External config via ConfigMaps/Secrets
+6. **Labeling**: Consistent labeling for service discovery
+
+## External References
+
+All configurations reference official Kubernetes documentation to ensure compliance with current best practices and API specifications.

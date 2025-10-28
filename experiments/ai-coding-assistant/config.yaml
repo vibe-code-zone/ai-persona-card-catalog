@@ -1,0 +1,26 @@
+name: "AI Coding Assistant"
+version: "1.0"
+
+# Base configuration
+settings:
+  temperature: 0.1
+  max_tokens: 4000
+  
+# System prompt configuration
+system_prompt:
+  file: "./prompts/system_prompt.md"
+  
+# Code style references
+coding_standards:
+  python: "./styles/python_style.md"
+  javascript: "./styles/js_style.md"
+  
+# Template includes
+templates:
+  code_review: "./templates/code_review.md"
+  documentation: "./templates/documentation.md"
+  
+# Additional resources
+resources:
+  - file: "./resources/best_practices.md"
+  - file: "./resources/common_patterns.md"

@@ -1,0 +1,12 @@
+{
+  "name": "Circular Reference Test Config",
+  "version": "1.0",
+  "settings": {
+    "template": "./file_a.md",
+    "$ref": "./file_b.md"
+  },
+  "documentation": {
+    "main": "./README.md",
+    "standalone": "./standalone.md"
+  }
+}
