@@ -21,7 +21,7 @@ This project was generated with AI assistance (Claude by Anthropic) with human g
 - [AIA: EAI Hin R Claude Code v1.0](https://aiattribution.github.io/statements/AIA-EAI-Hin-R-?model=Claude%20Code-v1.0)
 - Full: [AIA Entirely AI, Human-initiated, Reviewed, Claude Code v1.0](https://aiattribution.github.io/statements/AIA-EAI-Hin-R-?model=Claude%20Code-v1.0)
 - Expanded: This work was entirely AI-generated. AI was prompted for its contributions, or AI assistance was enabled. AI-generated content was reviewed and approved. The following model(s) or application(s) were used: Claude Code.
-- Interpretation: https://aiattribution.github.io/interpret-attribution
+- Interpretation: [https://aiattribution.github.io/interpret-attribution](https://aiattribution.github.io/interpret-attribution)
 - More: [https://aiattribution.github.io/](https://aiattribution.github.io/)
 
 ## Licensing
