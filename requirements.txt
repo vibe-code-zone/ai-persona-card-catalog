@@ -1,0 +1,5 @@
+# Core dependencies
+PyYAML>=6.0
+
+# Textual version dependencies
+textual>=0.41.0

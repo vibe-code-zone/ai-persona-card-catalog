@@ -1,0 +1,23 @@
+# Development and testing dependencies
+
+# Testing framework
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+# Code coverage
+pytest-cov>=4.0.0
+coverage[toml]>=7.0.0
+
+# Code quality
+black>=23.0.0
+isort>=5.12.0
+flake8>=6.0.0
+
+# Type checking
+mypy>=1.0.0
+
+# For TUI testing
+pytest-mock>=3.10.0
+
+# Textual testing (usually comes with textual but good to be explicit)
+textual[dev]>=0.41.0
