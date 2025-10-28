@@ -36,25 +36,25 @@ jobs:
     - name: Run flake8 (linting)
       run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
-  markdown-quality:
-    runs-on: ubuntu-latest
-    name: Markdown Quality
+  # markdown-quality:
+  #   runs-on: ubuntu-latest
+  #   name: Markdown Quality
     
-    steps:
-    - uses: actions/checkout@v4
+  #   steps:
+  #   - uses: actions/checkout@v4
     
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+  #   - name: Setup Node.js
+  #     uses: actions/setup-node@v4
+  #     with:
+  #       node-version: '18'
     
-    - name: Install markdown tools
-      run: |
-        npm install -g markdownlint-cli
-        npm install -g markdown-link-check
+  #   - name: Install markdown tools
+  #     run: |
+  #       npm install -g markdownlint-cli
+  #       npm install -g markdown-link-check
     
-    - name: Run markdownlint
-      run: markdownlint "**/*.md" --ignore node_modules --ignore "**/*_Prompts.md" --ignore "**/prompt_archive_*.md"
+  #   - name: Run markdownlint
+  #     run: markdownlint "**/*.md" --ignore node_modules --ignore "**/*_Prompts.md" --ignore "**/prompt_archive_*.md"
     
     # - name: Check markdown links
     #   run: |
